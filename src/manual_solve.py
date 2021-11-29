@@ -125,6 +125,52 @@ def solve_1b60fb0c(x):
     return output_array
 
             
+def solve_ff805c23(x):
+    # LEVEL : MEDIUM TO DIFFICULT
+    #file: ff805c23.json
+    
+    #Get the the unique colour numbers and the counts of each colour
+    (colour_list, colour_counts)=np.unique(x, return_counts=True)
+    #Find the colour that has minimum count, which is our colour for our box
+    box_colour = colour_list[np.argmin(colour_counts)]
+    #findind the dimension of the ouputarray
+    dimension = (max(np.where(x==box_colour)[0])-min(np.where(x==box_colour)[0]))+1
+    #cretaing an np array of zeros with output dimension
+    output_array = np.zeros((dimension,dimension))
+    #fliiping the the array to get a mirror image 
+    flip_array = np.flip(x)
+    #in the flipped array we are finding the box cordinates
+    colour_row,colour_column  = np.where(flip_array==box_colour)
+    #getting the pattern using the above cordinates by slicing the original array
+    pattern = x[min(colour_row):max(colour_row)+1, min(colour_column):max(colour_column)+1] 
+    
+    #returning the flipped version of the pattern
+    return np.flip(pattern)
+
+def solve_3631a71a(x):
+    # LEVEL : MEDIUM TO DIFFICULT
+    # file: 3631a71a.json
+    
+    #creating a copy of the input array, to retain the original input array
+    x_copy = x.copy() 
+    # finding the row and columns where the colour in x is 9
+    colour_row, colour_col = np.where(x == 9) 
+
+    #Iterating through the coordinates where the colour is 9
+    for row, column in zip(colour_row, colour_col):
+        # If x[column, row] is not 9, replace x_copy[row, column] with x[column, row]
+        if x[column, row] != 9:
+            x_copy[row, column] = x[column, row]
+        else:
+            # Else if the mirror value (vertical) is not equal to 9, replace x_copy[row, column] with x[row, 1 - column]
+            if x[row, 1 - column] != 9:
+                x_copy[row, column] = x[row, 1 - column] 
+            #Else replace x_copy[row, column] with the mirror value (horizontal), which is x[1 - row, column]
+            else:
+                x_copy[row, column] = x[1 - row, column]
+    
+    #returning the final array
+    return x_copy
 
 def main():
     # Find all the functions defined in this file whose names are
