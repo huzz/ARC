@@ -125,6 +125,27 @@ def solve_1b60fb0c(x):
     return output_array
 
             
+def solve_ff805c23(x):
+    # LEVEL : MEDIUM TO DIFFICULT
+    #file: ff805c23.json
+    
+    #Get the the unique colour numbers and the counts of each colour
+    (colour_list, colour_counts)=np.unique(x, return_counts=True)
+    #Find the colour that has minimum count, which is our colour for our box
+    box_colour = colour_list[np.argmin(colour_counts)]
+    #findind the dimension of the ouputarray
+    dimension = (max(np.where(x==box_colour)[0])-min(np.where(x==box_colour)[0]))+1
+    #cretaing an np array of zeros with output dimension
+    output_array = np.zeros((dimension,dimension))
+    #fliiping the the array to get a mirror image 
+    flip_array = np.flip(x)
+    #in the flipped array we are finding the box cordinates
+    colour_row,colour_column  = np.where(flip_array==box_colour)
+    #getting the pattern using the above cordinates by slicing the original array
+    pattern = x[min(colour_row):max(colour_row)+1, min(colour_column):max(colour_column)+1] 
+    
+    #returning the flipped version of the pattern
+    return np.flip(pattern)
 
 def main():
     # Find all the functions defined in this file whose names are
