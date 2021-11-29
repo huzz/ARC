@@ -65,7 +65,7 @@ After you've obtained the correct answer for the current test input grid, you ca
 
 When you're done with a task, use the "load task" button to open a new task.
 
-###Task Intepretation
+### Task Intepretation
 
 Task 1: ff805c23.json
 
@@ -85,9 +85,6 @@ In the case 2, to obtain the desired output the green coloured grids are placed 
 Task 4: 3631a71a.json
 The grid in the  12th column in the top most row is selected along with 7 consecutive rows downwards. The mirror image of the same pattern is used to fill the red boxes to get the desired output.
 The grids in the first 2 columns on the LHS have been selected from the grid from the 7th row to 12th row and is turned upside down to fill the red boxes to get the desired output.
-
-
-	 
 
 
 ### Issues raised to AI
