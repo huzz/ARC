@@ -64,3 +64,13 @@ When your output grid is ready, click the green "Submit!" button to check your a
 After you've obtained the correct answer for the current test input grid, you can switch to the next test input grid for the task using the "Next test input" button (if there is any available; most tasks only have one test input).
 
 When you're done with a task, use the "load task" button to open a new task.
+
+### Issues raised to AI
+
+On handcoding the 4 tasks and providing the task specific solution, we can notice that there are still a long way for AI research to to able to automate tasks completely. If we make a model based on the training data, it is unlikely to achieve a high accuracy. This is because the model will not understand the logic for each pattern individually and will be dependant on common features which are very few.
+AI also have a lot of ethical Issues:
+1. Job Loss and Wealth Inequality
+2. No model can be 100 percent accurate, hence there will always be some degree of uncertainty
+3. Rougue AI - Keeping control over AI as shown in the movies
+4. Algorithmic Bias
+5. Surveillance Captilism - How the compnies are monitoring us and using us as data machines.
