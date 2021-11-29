@@ -6,6 +6,50 @@
 # STUDENT - HARSHITHA BENGALURU RAGHURAM (21235396)
 # GITHUB REPO - https://github.com/huzz/ARC
 
+'''
+ Python features and libraries used
+
+ Library - NUMPY
+ Numpy is an in built opensource package in python which is used for scientific computing. 
+ Here numpy is mainly used for Array manupilation and generation.
+ The numpy functions below are explained in detail
+
+1. np.where()
+This function is used to return cordinates depending on the condition.
+It can also modify values of the array depending on the condition
+2. np.pad()
+This function is used to add padding. We can specify the pad value and pad width and on which axis pad is required.
+3. np.argmax() and np.argmin() 
+Used to find the min and max value of an array
+4. arr.shape 
+Used to find the shape of the array in (row, column)
+5. np.flip 
+This function is used to reverse the elements and get the mirror image. 
+6. np.triu 
+This function is used to get an upper triangle of the array. The array is split on the diagonal and all 
+values above the diagonal are retained and all values below are assigned as 0.
+7. np.rot90 
+This function is to rotate the array by 90. We can specify how many times we want to rotate is by.
+8. arr.copy() 
+This is used to deepcopy the input array. 
+9 array slicing 
+Normal Array slicing was used in multiple places. It has a format of: 
+Arr[row_index1:row_index2, column_index1:column_index2]
+10. np.unique() 
+This function is used to return a list of all unique values present in the array. If return_counts=True, 
+then it also returns the count for each unique element.
+11. np.zeros() 
+Creates an array of given shape of values all zero. This was used mainly to create output array with given dimensions.
+
+
+References:
+https://numpy.org/doc/stable/numpy-user.pdf
+Usage Date - 26/11/2021
+
+https://numpy.org/doc/stable/user/quickstart.html
+Usage Date - 26/11/2021
+'''
+
 import os, sys
 import json
 import numpy as np
@@ -18,9 +62,23 @@ import re
 ### must be in the data/training directory, not data/evaluation.
 
 
+#TASK 1
 def solve_c8cbb738(x):
     # LEVEL : DIFFICULT
     #file: solve_c8cbb738.json
+
+    '''
+    Logic: 
+    First we found the background colour add list and counts of the unique colours. 
+    Then we found out the output array dimensions and initialized it to 0 values. 
+    This could be found using np.where by finsing the locations of all colours and returning the maximum grid size.
+    Once we got this, we then iterate thorugh the colours and find the colour grid with the background respectively. 
+    The background is then filtered such that any value except of the colour is turned 0. If the shape of the colour 
+    array is not the same as the ouput then we add a padding of row/column depending on the arragement on either side.
+    Now we can simply add the colour array with the ouput array. Hence we get the right ouput.
+
+    All the training and test sets have been solved successfully using this algorithm.
+    '''
     
     #Get the the unique colour numbers and the counts of each colour
     (colour_list, colour_counts)=np.unique(x, return_counts=True)
@@ -63,9 +121,25 @@ def solve_c8cbb738(x):
     #returning the final output value
     return output_array
 
+#TASK 2
 def solve_1b60fb0c(x):
     # LEVEL : DIFFICULT
     #file: solve_1b60fb0c.json
+
+    '''
+    Logic: 
+    Here we try to get the reflection of the array across the diagonal, 
+    But since the inputs are not symmetrical, we add padding to make it symmetrical
+    First we find the first row, last row and last column values. If the first row is not equal to the 
+    last row then we can say it is not symmetrical, also if the last column is al 0's it is observed 
+    that the grid is then symetrical. Using this analysis we add padding to the upper_right/lower_right/upper/lower.
+    Flags are set to track where the padding was applied. 
+    Then we create an upper triangle grid from the input and rotate it twice by 90 degrees.
+    This gives us the array except of the shape marked in red. This is obtained by taking the difference from the original 
+    input. AT the end we just remove the extra padding added depending on the flag set.
+
+    All the training and test sets have been solved successfully using this algorithm.
+    '''
     
     #storing the original dimensions of x
     ori_dim=x.shape
@@ -124,10 +198,21 @@ def solve_1b60fb0c(x):
         
     return output_array
 
-            
+#TASK 3         
 def solve_ff805c23(x):
     # LEVEL : MEDIUM TO DIFFICULT
     #file: ff805c23.json
+
+    '''
+    Logic:
+    First we find the unique colours and thier counts. This colour with least count will be the box 
+    whose pattern has to be replaced and returned. An output array of 0 values is created using the obtained box dimensions.
+    The input array is flipped and the coordinates of the box colour is found. 
+    Using these coordinates the input array is sliced to obatain the pattern.
+    The pattern is then rotated and returned.
+
+    All the training and test sets have been solved successfully using this algorithm.
+    '''
     
     #Get the the unique colour numbers and the counts of each colour
     (colour_list, colour_counts)=np.unique(x, return_counts=True)
@@ -147,9 +232,21 @@ def solve_ff805c23(x):
     #returning the flipped version of the pattern
     return np.flip(pattern)
 
+#TASK 4
 def solve_3631a71a(x):
     # LEVEL : MEDIUM TO DIFFICULT
     # file: 3631a71a.json
+
+    '''
+    Logic:
+    FIrst we get all the row and column coordinates where the colour is of 9 value.
+    On iterating through these coordinates, we replace the value of our copied array
+    from the input. If the colour of value does not exists we simply assign the values 
+    as it is for that row column slice. If the value 9 exists we then assign the mirror 
+    vertical or mirror horizontal values of the input depending on the previous coordinate.
+
+    All the training and test sets have been solved successfully using this algorithm.
+    '''
     
     #creating a copy of the input array, to retain the original input array
     x_copy = x.copy() 
