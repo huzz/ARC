@@ -67,19 +67,19 @@ When you're done with a task, use the "load task" button to open a new task.
 
 ### Task Intepretation
 
-#### Task 1: ff805c23.json
+#### Task 1: c8cbb738.json
 
-All the grids are of the size 23 by 23 with cells covered with black,  green and red. In order to get the desired output, the blue grids take up the flipped pattern of the same positioned cells from the LHS.
-In the case 2, two cells after the blue grid are ignored and then from the mirror image of the pattern of next 5 consecutive grids gives the desired output.
-In case 3, the blue grid takes up the clockwise rotated pattern  which starts from the grid positioned at 5th column from the right hand side and 11th column from bottom to get the desired output.
+In the case 2, to obtain the desired output the green coloured grids are placed in between between the sky blue coloured grids. 
 
 #### Task 2: 1b60fb0c.json 
 
 In case 2, the mirror image of the grids in the last 4 columns present in the RHS of the input is changed to red colour and added on the LHS of the image to get the desired output.
 
-#### Task 3: c8cbb738.json
+#### Task 3: ff805c23.json
 
-In the case 2, to obtain the desired output the green coloured grids are placed in between between the sky blue coloured grids. 
+All the grids are of the size 23 by 23 with cells covered with black,  green and red. In order to get the desired output, the blue grids take up the flipped pattern of the same positioned cells from the LHS.
+In the case 2, two cells after the blue grid are ignored and then from the mirror image of the pattern of next 5 consecutive grids gives the desired output.
+In case 3, the blue grid takes up the clockwise rotated pattern  which starts from the grid positioned at 5th column from the right hand side and 11th column from bottom to get the desired output.
 
 #### Task 4: 3631a71a.json
 
