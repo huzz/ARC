@@ -7,7 +7,7 @@
 # GITHUB REPO - https://github.com/huzz/ARC
 
 '''
- Python features and libraries used
+ **Python features and libraries used and their commonalities and differences**
 
  Library - NUMPY
  Numpy is an in built opensource package in python which is used for scientific computing. 
@@ -17,30 +17,57 @@
 1. np.where()
 This function is used to return cordinates depending on the condition.
 It can also modify values of the array depending on the condition
+This function was used in all 4 tasks in two ways:
+ a. to find the coordinates
+ b. to modify the value of the array on basis of a condition
+The common usage was to find the location of a particular colour value in an array and 
+to replace a value to set a background colour(Task 1) or a specific pattern colour (Task 2)
+
 2. np.pad()
 This function is used to add padding. We can specify the pad value and pad width and on which axis pad is required.
+This function was used in Task 1 and Task 2.
+For Task 1 this was used to add pad to convert the colour array to the ouput dimension
+For Task 2 this was used to make the grid pattern symmetrical
+
 3. np.argmax() and np.argmin() 
 Used to find the min and max value of an array
+argmax was used in Task 1 and argmin was used in Task 3
+Both were used to find the max and min value respectively.
+
 4. arr.shape 
 Used to find the shape of the array in (row, column)
+This was used in all tasks.
+
 5. np.flip 
 This function is used to reverse the elements and get the mirror image. 
+This function was used in Task 3 only.
+
 6. np.triu 
 This function is used to get an upper triangle of the array. The array is split on the diagonal and all 
 values above the diagonal are retained and all values below are assigned as 0.
+This function was used in Task 2 only.
+
 7. np.rot90 
 This function is to rotate the array by 90. We can specify how many times we want to rotate is by.
+This fucntion was used in Task 2. If we use rot90 2 times this is the same as using the np.flip function
+
 8. arr.copy() 
 This is used to deepcopy the input array. 
+This function is used in Task 4.
+
 9 array slicing 
 Normal Array slicing was used in multiple places. It has a format of: 
 Arr[row_index1:row_index2, column_index1:column_index2]
+This function is used in all tasks to generate or slice a new array.
+
 10. np.unique() 
 This function is used to return a list of all unique values present in the array. If return_counts=True, 
 then it also returns the count for each unique element.
+This function was used in Task 1 and Task 3 for getting the unique elemnts and their counts.
+
 11. np.zeros() 
 Creates an array of given shape of values all zero. This was used mainly to create output array with given dimensions.
-
+This function was used in Task 1 and Task 3 for the same usage as mentioned above.
 
 References:
 https://numpy.org/doc/stable/numpy-user.pdf
