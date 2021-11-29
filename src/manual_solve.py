@@ -63,7 +63,68 @@ def solve_c8cbb738(x):
     #returning the final output value
     return output_array
 
+def solve_1b60fb0c(x):
+    # LEVEL : DIFFICULT
+    #file: solve_1b60fb0c.json
+    
+    #storing the original dimensions of x
+    ori_dim=x.shape
+    #storing the first row, last row and last column
+    first_row = x[0]
+    last_row = x[-1]
+    last_column = x[:,-1]
+    
+    #initializing the pad_type as None
+    #pad type can have 4 values ["upper_right", "lower_right", "upper", "lower"]
+    pad_type=None
+    # if the top row and bottom row are not equal and the last column is not full of 0 values
+    if len(set(first_row))!=len(set(last_row)) and list(set(last_column))!=[0]:
+        # if the first row is not full of 0 values and setting the respective flagz
+        if list(set(first_row))!=[0]:
+            #adding a pad to the top row and last column and setting the respective flag
+            x=np.pad(x,((1,0),(0,1)))
+            pad_type="upper_right"
+        # if the last row is not full of 0 values
+        else:
+            #adding a pad to the bottom row and last column and setting the respective flag
+            x=np.pad(x,((0,1),(0,1)))
+            pad_type="lower_right"
+    # if the top row and bottom row are not equal and the last column is full of 0 values
+    elif len(set(first_row))!=len(set(last_row)) and list(set(last_column))==[0]:
+        # if the first row is not full of 0 values
+        if list(set(first_row))!=[0]:
+            #adding a pad to the top row and setting the respective flag
+            x=np.pad(x,((1,0),(0,0)))
+            pad_type="upper"
+        # if the last row is not full of 0 values
+        else:
+            #adding a pad to the bottom row and setting the respective flag
+            x=np.pad(x,((0,1),(0,0)))
+            pad_type="lower"
+        
+    #getting Upper triangle of an array and the lower part values are set to "0"
+    diag_up = np.triu(x)
+    #rotating the array 2 times by 0 degrees
+    diag_up_T = np.rot90(diag_up, 2)
+    #adding the diagonal upper triangle array and the rotated version
+    output_array = diag_up+diag_up_T
+    #replacing the values having value 2 with 1. 
+    #This will make the entire shape except the red values
+    output_array=np.where(output_array==2, 1, output_array)         
+    #removing the difference with the original array to get the positions of red values
+    diff_array=output_array-x
+    #adding the difference array with the output array
+    output_array+=diff_array
+    
+    #Removing the additional pads depending on the flag set
+    if pad_type=='upper_right':output_array=output_array[output_array.shape[0]-ori_dim[0]:,:-(output_array.shape[1]-ori_dim[1])]
+    elif pad_type=='lower_right':output_array=output_array[:-(output_array.shape[0]-ori_dim[0]),:-(output_array.shape[1]-ori_dim[1])]
+    elif pad_type=='upper':output_array=output_array[(output_array.shape[0]-ori_dim[0]):,:]
+    elif pad_type=='lower':output_array=output_array[:-(output_array.shape[0]-ori_dim[0]),:]
+        
+    return output_array
 
+            
 
 def main():
     # Find all the functions defined in this file whose names are
